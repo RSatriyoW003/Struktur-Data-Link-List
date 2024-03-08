@@ -1,63 +1,29 @@
 class Node:
-    def __init__(self, menu, harga):
-        self.menu = menu
+    def __init__(self, nama_menu, harga, jumlah):
+        self.nama_menu = nama_menu
         self.harga = harga
+        self.jumlah = jumlah
         self.next = None
 
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    def tambah_pesanan(self, menu, harga):
-        new_node = Node(menu, harga)
-        if not self.head:
-            self.head = new_node
-        else:
-            current = self.head
-            while current.next:
-                current = current.next
-            current.next = new_node
+    def tambahkan_pesanan(self, nama_menu, harga, jumlah):
+        new_node = Node(nama_menu, harga, jumlah)
+        new_node.next = self.head
+        self.head = new_node
 
-    def tampilkan_pesanan(self):
-        if not self.head:
-            print("Keranjang pesanan kosong")
-        else:
-            current = self.head
-            index = 1
-            while current:
-                print(f"{index}. {current.menu} -> {current.harga} rupiah")
-                current = current.next
-                index += 1
+    def menampilkan_pesanan(self):
+        current = self.head
+        while current:
+            print(f"{current.jumlah} {current.nama_menu} - Rp{current.harga * current.jumlah}")
+            current = current.next
 
-    def hitung_total(self):
+    def hitung_total_harga(self):
         total_harga = 0
         current = self.head
         while current:
-            total_harga += current.harga
+            total_harga += current.harga * current.jumlah
             current = current.next
-   return total_harga
-
-#Menu 
-print("Miexue Ice Cream", 5000)
-print("Boba Shake", 16000)
-print("Mi Sundae", 14000)
-print("Mi Ganas", 11000)
-print("Creamy Mango Boba", 22000)
-
-# Menu Miexue
-menu_miexue = {
-    "Miexue Ice Cream": 5000,
-    "Boba Shake": 16000,
-    "Mi Sundae": 14000,
-    "Mi Ganas": 11000,
-    "Creamy Mango Boba": 22000
-}
-
-keranjang_pesanan = LinkedList()
-
-while True:
-    print("\nMenu:")
-    print("1. Tambah pesanan ke keranjang")
-    print("2. Tampilkan pesanan yang sudah ditambahkan")
-    print("3. Jumlah Harga yang dibayarkan")
-    print("4. Keluar")
+        return total_harga
