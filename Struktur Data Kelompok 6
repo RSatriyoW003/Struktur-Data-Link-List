@@ -35,4 +35,29 @@ class LinkedList:
         while current:
             total_harga += current.harga
             current = current.next
-        return total_harga
+   return total_harga
+
+#Menu 
+print("Miexue Ice Cream", 5000)
+print("Boba Shake", 16000)
+print("Mi Sundae", 14000)
+print("Mi Ganas", 11000)
+print("Creamy Mango Boba", 22000)
+
+# Menu Miexue
+menu_miexue = {
+    "Miexue Ice Cream": 5000,
+    "Boba Shake": 16000,
+    "Mi Sundae": 14000,
+    "Mi Ganas": 11000,
+    "Creamy Mango Boba": 22000
+}
+
+keranjang_pesanan = LinkedList()
+
+while True:
+    print("\nMenu:")
+    print("1. Tambah pesanan ke keranjang")
+    print("2. Tampilkan pesanan yang sudah ditambahkan")
+    print("3. Jumlah Harga yang dibayarkan")
+    print("4. Keluar")
